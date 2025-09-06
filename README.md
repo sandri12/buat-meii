@@ -1,1 +1,14 @@
-# buat-meii
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyek Website</title>
+</head>
+<body>
+    <h1> berikut beberapa proyek sederhana web dalam seminggu ini di buat  : </h1>
+</body>
+    <li> <a href="MaciwMeitacu.html"> buat meita</a></li>
+    <p> THANKS YOU !!!</p>
+
+</body>
