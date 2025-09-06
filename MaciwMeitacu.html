@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dari asing menjadi cinta </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+   <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            padding-bottom: 50px;
+            border-left: 2px solid #555;
+        }
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -11px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #eab308; /* amber-500 */
+            border: 3px solid #121212;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div class="container mx-auto px-6 py-12">
+
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <h1 class="text-5xl md:text-6xl font-serif text-amber-400">Kisah Cinta Kita</h1>
+            <p class="text-lg text-gray-400 mt-4">Sebuah Perjalanan yang Tak Terlupakan</p>
+            <div id="together-duration" class="mt-6 text-xl text-white bg-white/10 rounded-full inline-block px-6 py-3">
+                <!-- Durasi akan diisi oleh JavaScript -->
+            </div>
+        </header>
+
+        <!-- Timeline Container -->
+        <div id="timeline-container" class="max-w-3xl mx-auto">
+            
+            <!-- Item-item di timeline akan diisi oleh JavaScript -->
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-16">
+            <p class="font-serif text-2xl text-amber-400">"Dan petualangan kita masih terus berlanjut..."</p>
+            <p class="text-gray-500 mt-2">Dengan Cinta, Untukmu.</p>
+        </footer>
+
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- PENGATURAN AWAL ---
+    // !!! GANTI TANGGAL INI DENGAN TANGGAL JADIAN ANDA !!!
+    const relationshipStartDate = new Date('2025-01-12T19:00:00'); 
+
+    // --- DATA KENANGAN ---
+    // Anda bisa menambah, mengubah, atau menghapus data kenangan di bawah ini
+    const memories = [
+        {
+            date: '15 November 2024',
+            title: 'Awal Kenalan',
+            moment: 'Hari di mana takdir mempertemukan kita untuk pertama kalinya. Sebuah sapaan sederhana yang ternyata menjadi awal dari segalanya.',
+            image: '1.png'
+        },
+        {
+            date: '12 Januari 2025',
+            title: 'Hari Jadian Kita',
+            moment: 'Di hari yang penuh cinta, kita memutuskan untuk menulis cerita bersama. Resmi menjadi "kita", dan hatiku memilihmu sebagai rumah.',
+            image: '3 .png'
+        },
+        {
+            date: '20 Februari 2025',
+            title: 'Liburan Pertama ke Pantai',
+            moment: 'Di bawah mentari dan deburan ombak, kita menciptakan kenangan yang tak akan pernah pudar. Tawa kita menjadi musik terindah hari itu.',
+            image: '4.png'
+        },
+        {
+            date: '5 April 2025',
+            title: 'Menyambut Tahun Baru Bersama',
+            moment: 'Menatap kembang api dan masa depan, berdampingan denganmu. Aku tahu tahun-tahun berikutnya akan luar biasa karena ada kamu.',
+            image: '2 .png'
+        },
+        {
+            date: 'Hari Ini',
+            title: 'Masih dan Akan Terus Bersama',
+            moment: 'Setiap hari bersamamu adalah anugerah. Terima kasih telah menjadi bagian terbaik dalam hidupku. Aku mencintaimu, lebih dari kemarin dan kurang dari esok.',
+            image: '5.png'
+        }
+    ];
+
+    // --- Elemen DOM ---
+    const durationEl = document.getElementById('together-duration');
+    const timelineContainer = document.getElementById('timeline-container');
+
+    // --- FUNGSI ---
+
+    // Fungsi untuk menghitung durasi hubungan
+    const calculateDuration = () => {
+        const now = new Date();
+        const diff = now - relationshipStartDate;
+
+        const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+        const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+        const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+        
+        durationEl.textContent = `${years} Tahun, ${months} Bulan, ${days} Hari Bersama`;
+    };
+
+    // Fungsi untuk merender timeline
+    const renderTimeline = () => {
+        timelineContainer.innerHTML = memories.map(memory => `
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <time class="mb-1 text-sm font-normal leading-none text-gray-400">${memory.date}</time>
+                <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-xl overflow-hidden mt-2">
+                    <img src="${memory.image}" alt="${memory.title}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif font-semibold text-white">${memory.title}</h3>
+                        <p class="my-2 text-gray-300">${memory.moment}</p>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    };
+
+    // --- INISIALISASI ---
+    calculateDuration();
+    renderTimeline();
+
+});
+</script>
+
+</body>
+</html>
